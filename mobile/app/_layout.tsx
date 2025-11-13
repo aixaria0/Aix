@@ -14,10 +14,6 @@ import { loadEnvConfig, validateEnvConfig } from '../src/services/config';
 export default function RootLayout() {
   const { setAuthenticated, setInitializing, setError } = useAppStore();
 
-  useEffect(() => {
-    initializeApp();
-  }, []);
-
   const initializeApp = async () => {
     try {
       setInitializing(true);
@@ -59,6 +55,11 @@ export default function RootLayout() {
       setInitializing(false);
     }
   };
+
+  useEffect(() => {
+    initializeApp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaProvider>
