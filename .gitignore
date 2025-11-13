@@ -1,0 +1,7 @@
+# Mobile app
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/.expo-shared/
+mobile/*.log
+mobile/.DS_Store
