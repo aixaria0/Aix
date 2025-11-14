@@ -1,0 +1,47 @@
+name: Mobile Preview APK Build
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "mobile/**"
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install EAS CLI
+        run: npm i -g eas-cli
+
+      - name: Install dependencies
+        working-directory: mobile
+        run: npm install
+
+      - name: Login to Expo (token)
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas login --token $EXPO_TOKEN
+
+      - name: Validate EAS config
+        working-directory: mobile
+        run: |
+          if [ ! -f eas.json ]; then
+            echo "eas.json missing"
+            exit 1
+          fi
+          echo "Configuration OK"
+
+      - name: Build APK (preview profile)
+        working-directory: mobile
+        run: eas build --profile preview --platform android --non-interactive
+
+      - name: Show latest build
+        working-directory: mobile
+        run: eas build:list --limit 1
