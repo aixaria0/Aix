@@ -8,7 +8,7 @@ This is an internal-only mobile application scaffold built with Expo React Nativ
 
 This application is **NOT** for public use. You must have:
 
-- Valid `INTERNAL_AUTH_TOKEN` (obtain from platform team)
+- Valid `EXPO_PUBLIC_INTERNAL_AUTH_TOKEN` (obtain from platform team)
 - Access to internal API endpoints
 - Authorization to work on this project
 
@@ -35,8 +35,8 @@ This application is **NOT** for public use. You must have:
 
    Edit `.env` with valid credentials:
    ```
-   API_BASE_URL=https://your-internal-api.example.com
-   INTERNAL_AUTH_TOKEN=your-secret-internal-token
+   EXPO_PUBLIC_API_BASE_URL=https://your-internal-api.example.com
+   EXPO_PUBLIC_INTERNAL_AUTH_TOKEN=your-secret-internal-token
    ```
 
    **IMPORTANT**: Never commit the `.env` file. It is in `.gitignore` by design.
@@ -111,7 +111,7 @@ npm run lint
 
 ## Security Notes
 
-- **Never commit `.env` file or expose `INTERNAL_AUTH_TOKEN`**
+- **Never commit `.env` file or expose `EXPO_PUBLIC_INTERNAL_AUTH_TOKEN`**
 - This app is for internal use only
 - All API communication uses bearer token authentication
 - Contact the platform team for credential issues
