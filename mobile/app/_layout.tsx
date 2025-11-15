@@ -3,7 +3,7 @@
  * Initializes authentication and sets up app structure
  */
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useAppStore } from '../src/store/appStore';
@@ -14,7 +14,7 @@ import { loadEnvConfig, validateEnvConfig } from '../src/services/config';
 export default function RootLayout() {
   const { setAuthenticated, setInitializing, setError } = useAppStore();
 
-  const initializeApp = async () => {
+  const initializeApp = useCallback(async () => {
     try {
       setInitializing(true);
       setError(null);
@@ -54,12 +54,11 @@ export default function RootLayout() {
     } finally {
       setInitializing(false);
     }
-  };
+  }, [setAuthenticated, setInitializing, setError]);
 
   useEffect(() => {
     initializeApp();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initializeApp]);
 
   return (
     <SafeAreaProvider>

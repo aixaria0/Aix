@@ -65,9 +65,9 @@ export class ApiClient {
       (response) => response,
       (error) => {
         if (error.response?.status === 401 || error.response?.status === 403) {
-          throw new AuthenticationError(
+          return Promise.reject(new AuthenticationError(
             'Authentication failed. Please verify your internal credentials.'
-          );
+          ));
         }
         return Promise.reject(error);
       }
