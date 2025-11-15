@@ -137,9 +137,9 @@ This application is designed for **internal use only** and includes:
 - Secure token storage with encryption
 - Input validation for authentication
 - No hardcoded secrets or credentials
-- Security policy documentation in [SECURITY.md](SECURITY.md)
+- Security policy documentation (see [SECURITY.md](SECURITY.md) — currently a template, project-specific policy forthcoming)
 
-For vulnerability reporting, please see our [Security Policy](SECURITY.md).
+For vulnerability reporting, please refer to our [Security Policy](SECURITY.md) (note: this file is currently a placeholder and will be updated).
 
 ## 🎯 Current Status
 
