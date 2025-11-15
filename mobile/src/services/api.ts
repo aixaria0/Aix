@@ -51,11 +51,7 @@ export class ApiClient {
           throw new AuthenticationError('Authentication token is missing');
         }
         
-        // Update token in case it changed
-        const currentToken = authService.getBearerToken();
-        if (config.headers) {
-          config.headers.Authorization = `Bearer ${currentToken}`;
-        }
+        // No need to update token; already set during initialization
         
         return config;
       },
