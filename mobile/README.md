@@ -15,7 +15,6 @@ This application is **NOT** for public use. You must have:
 ## Prerequisites
 
 - Node.js 18+ and npm
-- Expo CLI (`npm install -g expo-cli`)
 - iOS Simulator (macOS) or Android Emulator
 
 ## Setup
