@@ -1,0 +1,17 @@
+# Optional dependencies for different quantum providers
+# Uncomment the providers you want to use
+
+# IBM Qiskit
+# qiskit==0.45.0
+# qiskit-ibm-runtime==0.15.0
+
+# Azure Quantum
+# azure-quantum==0.28.0
+
+# AWS Braket
+# amazon-braket-sdk==1.54.0
+# boto3==1.29.0
+
+# For FastAPI wrapper (if needed)
+# fastapi==0.104.1
+# uvicorn==0.24.0

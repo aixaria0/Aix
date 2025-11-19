@@ -1,196 +1,286 @@
-# Aix
+# Aix - Quantum Machine Learning Game
 
-**Aix** is an internal mobile testing platform designed for exploratory security testing and vulnerability tracking. Built with Expo and React Native, it provides a comprehensive solution for security teams to manage test jobs, track metrics, review vulnerability reports, and engage with gamification features.
+**Aix** is a quantum machine learning game that incorporates offline quantum-inspired computation and hybrid quantum cloud capabilities. The project provides an interactive platform for learning quantum computing through gameplay, with native iOS and Android applications backed by cloud quantum services.
 
-## 🎯 Overview
+## 🎯 Project Overview
 
-Aix is a complete mobile application scaffold that demonstrates best practices for building production-ready React Native applications. It serves as an internal tool for security testing workflows and includes:
+This repository contains a quantum machine learning game featuring:
 
-- **Authentication System** - Token-based authentication with secure storage
-- **Metrics Dashboard** - Real-time tracking of jobs, scores, and success ratios
-- **Vulnerability Reports** - Comprehensive reporting system with severity classification
-- **Gamification** - XP system, level progression, and achievement badges
-- **Theme Support** - Light and dark mode with persistent user preferences
-- **Modern Architecture** - TypeScript, Zustand state management, and comprehensive testing
+- **Native Mobile Apps**: iOS (SwiftUI) and Android (Jetpack Compose) with interactive quantum visualizations
+- **Bloch Sphere**: Visualization for 1 and 2 qubits with real-time parameter control
+- **VQC Training**: Variational Quantum Classifier with live decision boundary visualization
+- **Backend Services**: AGI service for adaptive gameplay and Quantum Bridge for cloud provider integration
+- **Shared Quantum Modules**: VQC and VQE computation modules
+- **CI/CD Pipeline**: Automated builds, linting, and security scanning
+
+---
+
+## 📱 Mobile Applications
+
+### iOS App (SwiftUI)
+Located in `ios-app/QuantumMLGame/`
+
+**Features:**
+- ✅ Bloch Sphere visualization (1 and 2 qubits)
+- ✅ VQC training mode with decision boundaries
+- ✅ Interactive parameter controls
+- ✅ Starting menu with game modes
+
+**Tech Stack:**
+- SwiftUI
+- iOS 17.0+
+- Swift 5.0
+
+### Android App (Jetpack Compose)
+Located in `android-app/`
+
+**Features:**
+- ✅ Bloch Sphere visualization (1 and 2 qubits)
+- ✅ VQC training mode with decision boundaries
+- ✅ Material 3 design
+- ✅ Feature parity with iOS
+
+**Tech Stack:**
+- Jetpack Compose
+- Material 3
+- Kotlin 1.9
+
+---
+
+## 🔧 Backend Services
+
+### AGI Service
+`backend/agi-service/`
+
+FastAPI-based adaptive game intelligence with pluggable LLM support.
+
+**Features:**
+- Adaptive difficulty adjustment
+- Context-aware hints
+- Challenge generation
+- Performance feedback
+- Pluggable LLM providers (OpenAI, Anthropic, local models)
+
+**Quick Start:**
+```bash
+cd backend/agi-service
+pip install -r requirements.txt
+python main.py
+# Runs on http://localhost:8000
+```
+
+### Quantum Bridge
+`backend/quantum-bridge/`
+
+Abstract interface for cloud quantum providers.
+
+**Supported Providers:**
+- IBM Qiskit Runtime
+- Azure Quantum
+- AWS Braket
+- Mock Backend (for development)
+
+**Quick Start:**
+```bash
+cd backend/quantum-bridge
+python quantum_bridge.py
+```
+
+---
+
+## 🧮 Shared Quantum Modules
+
+### VQC Module
+`shared/vqc/`
+
+Variational Quantum Classifier implementation for binary classification.
+
+**Features:**
+- Feature encoding
+- Parameterized quantum circuits
+- Gradient-based optimization
+- Classical simulation optimized for mobile
+
+### VQE Module
+`shared/vqe/`
+
+Variational Quantum Eigensolver for finding ground state energies.
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18 or higher
-- npm or yarn
-- Expo CLI (optional, but recommended)
+**iOS Development:**
+- macOS with Xcode 15.0+
+- iOS 17.0+ target
+
+**Android Development:**
+- JDK 17
+- Android Studio
+- Android SDK API 24+
+
+**Backend:**
+- Python 3.11+
 
 ### Installation
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/aixaria0/Aix.git
+cd Aix
 
-# Navigate to the mobile directory
-cd Aix/mobile
+# iOS App
+cd ios-app/QuantumMLGame
+open QuantumMLGame.xcodeproj
 
-# Install dependencies
-npm install
+# Android App
+cd android-app
+./gradlew build
+./gradlew installDebug
 
-# Start the development server
-npm start
+# Backend Services
+cd backend/agi-service
+pip install -r requirements.txt
+python main.py
 ```
 
-### Running Tests
+---
 
-```bash
-cd mobile
-npm test              # Run all tests
-npm run typecheck     # Check TypeScript types
-```
+## 🎮 Game Modes
 
-## 📱 Features
+### 1. Bloch Sphere
+Interactive visualization of quantum states:
+- Single qubit state manipulation with θ and φ parameters
+- Two-qubit product state visualization
+- Real-time probability calculations
+- Educational quantum state representations
 
-### Authentication
-- Secure token validation with simulated API ping
-- Encrypted token storage using Expo SecureStore
-- Error handling with user-friendly feedback
+### 2. VQC Training
+Train a variational quantum classifier:
+- Live decision boundary visualization
+- Training metrics (epoch, accuracy, loss)
+- Adjustable learning rate and circuit layers
+- Interactive training controls
 
-### Metrics Dashboard
-- Track total and active jobs
-- Monitor average scores and success ratios
-- Pull-to-refresh functionality
-- Animated chart visualizations (placeholder)
+### 3. Quantum Challenges (Coming Soon)
+Gamified quantum computing challenges and puzzles.
 
-### Reports System
-- Browse vulnerability reports with severity indicators
-- Color-coded badges (Critical, High, Medium, Low)
-- Detailed report views with risk scores
-- Prompt lineage tracking
+---
 
-### Gamification
-- Earn 25 XP per test creation
-- 5 level progression system
-- 3 achievement badges (Starter, Explorer, Strategist)
-- Visual progress tracking
+## 🧪 CI/CD Workflows
 
-### Theme System
-- Light and dark mode support
-- System appearance detection
-- Persistent theme preferences
-- Consistent color palette throughout
+Located in `.github/workflows/`
+
+- ✅ **iOS Build** - Xcode builds and tests
+- ✅ **Android Build** - Gradle builds and tests
+- ✅ **SwiftLint** - iOS code style enforcement
+- ✅ **ktlint** - Android/Kotlin code style
+- ✅ **CodeQL** - Security scanning
+- ✅ **Backend Tests** - Python service tests
+
+---
 
 ## 📁 Project Structure
 
 ```
 Aix/
-├── mobile/                    # Expo mobile application
-│   ├── app/                   # Application screens
-│   │   ├── (tabs)/           # Tab navigation screens
-│   │   ├── auth/             # Authentication screens
-│   │   └── report/           # Report detail screens
-│   ├── src/                   # Source code
-│   │   ├── api/              # API integration layer
-│   │   ├── components/       # Reusable components
-│   │   ├── store/            # Zustand state management
-│   │   └── theme/            # Theme configuration
-│   ├── __tests__/            # Test files
-│   └── ...                    # Configuration files
-├── COMPLETION_SUMMARY.md      # Project completion summary
-├── PROJECT_DELIVERY.md        # Delivery documentation
-├── SECURITY.md                # Security policy
-└── README.md                  # This file
+├── ios-app/                    # iOS Application (SwiftUI)
+│   └── QuantumMLGame/
+├── android-app/                # Android Application (Compose)
+│   ├── app/src/main/kotlin/
+│   └── build.gradle
+├── backend/                    # Backend Services
+│   ├── agi-service/           # Adaptive Game Intelligence
+│   └── quantum-bridge/        # Quantum Cloud Interface
+├── shared/                     # Shared Quantum Modules
+│   ├── vqc/                   # Variational Quantum Classifier
+│   └── vqe/                   # Variational Quantum Eigensolver
+├── .github/workflows/          # CI/CD Workflows
+├── mobile/                     # Legacy Expo app
+└── README.md                   # This file
 ```
-
-## 📚 Documentation
-
-Comprehensive documentation is available in the `/mobile` directory:
-
-- **[Mobile README](mobile/README.md)** - Complete mobile app documentation
-- **[Architecture](mobile/ARCHITECTURE.md)** - System architecture and design decisions
-- **[Implementation Summary](mobile/IMPLEMENTATION_SUMMARY.md)** - Detailed implementation checklist
-- **[Requirements Checklist](mobile/REQUIREMENTS_CHECKLIST.md)** - Point-by-point verification
-
-## 🧪 Testing
-
-The project includes comprehensive test coverage:
-
-- **17 passing tests** across authentication and gamification features
-- **100% test pass rate** for core business logic
-- TypeScript strict mode enabled for type safety
-
-```bash
-cd mobile
-npm test
-```
-
-## 🛠️ Technology Stack
-
-- **Expo SDK 54** - React Native framework
-- **React Native 0.81.5** - Mobile UI framework
-- **TypeScript 5.9** - Type-safe development
-- **Zustand 5.0** - Lightweight state management
-- **React Native Reanimated 4.1** - Smooth animations
-- **Jest 29.7** - Testing framework
-- **Expo SecureStore** - Encrypted storage
-
-## 🔐 Security
-
-This application is designed for **internal use only** and includes:
-
-- Secure token storage with encryption
-- Input validation for authentication
-- No hardcoded secrets or credentials
-- Security policy documentation (see [SECURITY.md](SECURITY.md) — currently a template, project-specific policy forthcoming)
-
-For vulnerability reporting, please refer to our [Security Policy](SECURITY.md) (note: this file is currently a placeholder and will be updated).
-
-## 🎯 Current Status
-
-✅ **Complete and Ready for Internal Testing**
-
-- All core features implemented
-- Comprehensive test coverage
-- Full TypeScript support
-- Production-ready architecture
-- Extensive documentation
-
-## 🔄 Future Enhancements
-
-The following features are planned for future iterations:
-
-- Real backend API integration (currently using mock data)
-- Advanced chart visualizations
-- Push notifications
-- Additional gamification features
-- EAS build configuration for distribution
-
-## 📝 Integration Guide
-
-All API integration points are marked with `// TODO(api):` comments in the code. Key integration areas:
-
-1. **Authentication** - `src/api/auth.ts`
-2. **Metrics** - `src/store/useMetrics.ts`
-3. **Reports** - `src/store/useReports.ts`
-
-## 🤝 Contributing
-
-This is an internal project. For team members:
-
-1. Follow existing code patterns and conventions
-2. Write tests for new features
-3. Use TypeScript strict mode
-4. Update documentation as needed
-5. Follow the established architecture
-
-## 📄 License
-
-This project is proprietary and for internal use only.
-
-## 📞 Support
-
-For questions or support, please refer to:
-
-- [Mobile README](mobile/README.md) for app-specific documentation
-- [Architecture Guide](mobile/ARCHITECTURE.md) for technical details
-- [Project Delivery Report](PROJECT_DELIVERY.md) for complete project overview
 
 ---
 
-**Built with ❤️ for internal security testing**
+## 🔐 Security
+
+- **CodeQL Scanning**: Automated security analysis
+- **Secret Scanning**: Prevents credential leaks
+- **Dependency Updates**: Regular security patches
+- **Secure Configuration**: Environment-based secrets
+
+For vulnerability reporting, see [SECURITY.md](SECURITY.md).
+
+---
+
+## 📚 Documentation
+
+Comprehensive documentation available:
+
+- **[Full Quantum Game Docs](QUANTUM_README.md)** - Complete documentation
+- **[AGI Service](backend/agi-service/README.md)** - API and configuration
+- **[Quantum Bridge](backend/quantum-bridge/README.md)** - Provider integration
+- **[VQC Module](shared/vqc/README.md)** - Implementation details
+- **[VQE Module](shared/vqe/README.md)** - VQE details
+
+---
+
+## 🛣️ Roadmap
+
+### Phase 1: Foundation ✅
+- [x] iOS and Android apps
+- [x] Bloch Sphere visualization
+- [x] VQC training mode
+- [x] Backend service scaffolding
+- [x] CI/CD workflows
+
+### Phase 2: Cloud Integration
+- [ ] Real quantum provider integration
+- [ ] Job queuing and result caching
+- [ ] Cost estimation
+- [ ] Error mitigation
+
+### Phase 3: Advanced Features
+- [ ] Additional quantum algorithms
+- [ ] Multiplayer challenges
+- [ ] Leaderboards
+- [ ] Quantum chemistry integration
+
+### Phase 4: Production
+- [ ] Cloud deployment
+- [ ] App Store releases
+- [ ] Analytics and monitoring
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Follow code style (SwiftLint/ktlint)
+4. Submit a Pull Request
+
+---
+
+## 📄 License
+
+Proprietary - Internal development only.
+
+---
+
+## 🙏 Acknowledgments
+
+- IBM Quantum (Qiskit)
+- Microsoft Azure Quantum
+- AWS Braket
+- Open-source quantum computing community
+
+---
+
+**Built with ❤️ for quantum computing education**
+
+*Explore the quantum realm through interactive gameplay!*

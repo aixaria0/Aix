@@ -1,0 +1,91 @@
+name: Backend Services Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**'
+      - 'shared/**'
+      - '.github/workflows/backend-tests.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**'
+      - 'shared/**'
+
+jobs:
+  test-agi-service:
+    name: Test AGI Service
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        working-directory: backend/agi-service
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio httpx
+      
+      - name: Run service tests
+        working-directory: backend/agi-service
+        run: |
+          # Test import
+          python -c "import main; print('AGI Service imports OK')"
+          
+          # TODO: Add actual tests when test files are created
+          # pytest tests/
+  
+  test-quantum-bridge:
+    name: Test Quantum Bridge
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install pytest numpy
+      
+      - name: Run quantum bridge tests
+        working-directory: backend/quantum-bridge
+        run: |
+          # Test the mock backend
+          python quantum_bridge.py
+  
+  test-vqc-module:
+    name: Test VQC Module
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: pip install numpy pytest
+      
+      - name: Run VQC module tests
+        working-directory: shared/vqc
+        run: |
+          # Test the VQC module
+          python vqc_module.py

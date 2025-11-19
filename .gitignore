@@ -1,7 +1,82 @@
-# Mobile app
+# Mobile app (legacy Expo)
 mobile/node_modules/
 mobile/.expo/
 mobile/dist/
 mobile/.expo-shared/
 mobile/*.log
 mobile/.DS_Store
+
+# Android specific
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+android-app/.gradle/
+android-app/build/
+android-app/app/build/
+android-app/local.properties
+
+# Gradle
+.gradle/
+build/
+
+# iOS/macOS
+*.xcuserstate
+*.xcworkspace
+xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+ios-app/build/
+ios-app/DerivedData/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.resolved
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Backend
+*.pyc
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
