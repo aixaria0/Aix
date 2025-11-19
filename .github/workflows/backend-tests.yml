@@ -17,6 +17,8 @@ jobs:
   test-agi-service:
     name: Test AGI Service
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -46,6 +48,8 @@ jobs:
   test-quantum-bridge:
     name: Test Quantum Bridge
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
@@ -70,6 +74,8 @@ jobs:
   test-vqc-module:
     name: Test VQC Module
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
