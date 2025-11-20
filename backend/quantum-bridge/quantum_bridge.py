@@ -12,9 +12,6 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from enum import Enum
-import json
-
-
 class QuantumProvider(Enum):
     """Supported quantum cloud providers"""
     IBM_QISKIT = "ibm_qiskit"
