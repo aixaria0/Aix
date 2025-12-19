@@ -40,6 +40,23 @@ This application is **NOT** for public use. You must have:
 
    **IMPORTANT**: Never commit the `.env` file. It is in `.gitignore` by design.
 
+### Production Environment Variables & Deployment
+
+For production builds (e.g., EAS Build), environment variables should be managed differently than local `.env` files. Here are recommended approaches:
+
+1. **EAS Secrets**: Store sensitive values (like API tokens) securely using [EAS Secrets](https://docs.expo.dev/build-reference/secrets/). These are injected at build time and never exposed in source code.
+
+2. **app.config.js with `extra`**: Define non-sensitive environment variables in your `app.config.js` file using the `extra` field. Access these in your app via [`expo-constants`](https://docs.expo.dev/versions/latest/sdk/constants/#constantsmanifestextra).
+
+   ```js
+   // app.config.js
+   export default ({ config }) => ({
+     ...config,
+     extra: {
+       API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL,
+       INTERNAL_AUTH_TOKEN: process.env.EXPO_PUBLIC_INTERNAL_AUTH_TOKEN,
+     },
+   });
 ## Running the App
 
 ```bash
