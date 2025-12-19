@@ -10,16 +10,20 @@ Techniques:
 - Dynamical Decoupling
 """
 
-from typing import List, Callable, Optional, Dict
+from typing import List, Callable, Optional, Dict, TYPE_CHECKING, Any
 import numpy as np
 
-try:
+if TYPE_CHECKING:
     from qiskit.transpiler import PassManager
+
+try:
+    from qiskit.transpiler import PassManager as PM
     from qiskit.transpiler.passes import PadDynamicalDecoupling
     from qiskit.circuit.library import XGate
     QISKIT_AVAILABLE = True
 except ImportError:
     QISKIT_AVAILABLE = False
+    PM = Any
     print("Warning: Qiskit not available. Install with: pip install qiskit")
 
 
@@ -194,7 +198,7 @@ class DynamicalDecoupling:
         
         self.dd_sequence = dd_sequence
     
-    def get_pass_manager(self, durations, target) -> PassManager:
+    def get_pass_manager(self, durations, target) -> Any:
         """
         Get transpiler pass manager with DD.
         

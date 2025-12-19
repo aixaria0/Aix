@@ -10,8 +10,11 @@ Supported mappings:
 - Parity Mapping
 """
 
-from typing import Dict, Tuple
+from typing import Dict, Tuple, TYPE_CHECKING, Any
 from enum import Enum
+
+if TYPE_CHECKING:
+    from qiskit_nature.second_q.operators import FermionicOp
 
 try:
     from qiskit_nature.second_q.mappers import (
@@ -20,10 +23,11 @@ try:
         ParityMapper,
         QubitConverter
     )
-    from qiskit_nature.second_q.operators import FermionicOp
+    from qiskit_nature.second_q.operators import FermionicOp as FermionOp
     QISKIT_NATURE_AVAILABLE = True
 except ImportError:
     QISKIT_NATURE_AVAILABLE = False
+    FermionOp = Any
     print("Warning: qiskit-nature not available. Install with: pip install qiskit-nature")
 
 
@@ -68,7 +72,7 @@ class QubitMapper:
         else:
             raise ValueError(f"Unknown mapping type: {self.mapping_type}")
     
-    def map_fermionic_to_qubit(self, fermionic_op: FermionicOp):
+    def map_fermionic_to_qubit(self, fermionic_op: Any):
         """
         Map a fermionic operator to qubit operator.
         

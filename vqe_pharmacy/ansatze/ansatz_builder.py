@@ -10,15 +10,19 @@ Includes:
 - Chemistry-inspired circuits
 """
 
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING, Any
 from enum import Enum
 
+if TYPE_CHECKING:
+    from qiskit.circuit import QuantumCircuit
+
 try:
-    from qiskit.circuit import QuantumCircuit, Parameter
+    from qiskit.circuit import QuantumCircuit as QC, Parameter
     from qiskit.circuit.library import EfficientSU2, RealAmplitudes, TwoLocal
     QISKIT_AVAILABLE = True
 except ImportError:
     QISKIT_AVAILABLE = False
+    QC = Any
     print("Warning: Qiskit not available. Install with: pip install qiskit")
 
 
@@ -58,7 +62,7 @@ class AnsatzBuilder:
         self.ansatz_type = ansatz_type
         self.reps = reps
         
-    def build(self) -> QuantumCircuit:
+    def build(self) -> Any:
         """
         Build the ansatz circuit.
         
@@ -74,7 +78,7 @@ class AnsatzBuilder:
         else:
             raise ValueError(f"Unknown ansatz type: {self.ansatz_type}")
     
-    def _build_efficient_su2(self) -> QuantumCircuit:
+    def _build_efficient_su2(self) -> Any:
         """
         Build EfficientSU2 ansatz.
         
@@ -88,7 +92,7 @@ class AnsatzBuilder:
             insert_barriers=True
         )
     
-    def _build_real_amplitudes(self) -> QuantumCircuit:
+    def _build_real_amplitudes(self) -> Any:
         """
         Build RealAmplitudes ansatz.
         
@@ -102,7 +106,7 @@ class AnsatzBuilder:
             insert_barriers=True
         )
     
-    def _build_hardware_efficient(self) -> QuantumCircuit:
+    def _build_hardware_efficient(self) -> Any:
         """
         Build custom hardware-efficient ansatz for Heron R3.
         
@@ -176,7 +180,7 @@ class UCCSDBuilder:
         self.num_electrons = num_electrons
         self.excitation_type = excitation_type
     
-    def build(self) -> QuantumCircuit:
+    def build(self) -> Any:
         """
         Build UCCSD ansatz.
         
@@ -206,7 +210,7 @@ def create_ansatz(
     ansatz_name: str = "efficient_su2",
     reps: int = 1,
     **kwargs
-) -> QuantumCircuit:
+) -> Any:
     """
     Factory function to create an ansatz circuit.
     
