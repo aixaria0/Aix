@@ -1,0 +1,28 @@
+# VQE-PHARMACY: Quantum Chemistry Pipeline for Drug Discovery
+# Dependencies for IBM Quantum Heron R3 Processor
+
+# Core Quantum Computing Stack
+qiskit==1.0.0
+qiskit-aer==0.13.3
+qiskit-ibm-runtime==0.20.0
+qiskit-nature==0.7.2
+
+# Classical Chemistry Driver
+pyscf==2.5.0
+
+# Optimization and Numerical Computing
+scipy>=1.11.0
+numpy>=1.24.0
+
+# Visualization and Data Analysis
+matplotlib>=3.7.0
+
+# Error Mitigation
+mitiq>=0.32.0
+
+# Development and Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
