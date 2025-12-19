@@ -4,14 +4,14 @@ This directory contains placeholder assets for the Aix Internal mobile applicati
 
 ## Current Assets
 
-- **icon.png** (1024x1024) - App icon for iOS and Android
-- **splash.png** (1242x2436) - Splash screen image
-- **adaptive-icon.png** (1024x1024) - Android adaptive icon foreground
-- **favicon.png** (48x48) - Web favicon
+- **icon.png** (1x1) - Minimal transparent placeholder for app icon
+- **splash.png** (1x1) - Minimal transparent placeholder for splash screen
+- **adaptive-icon.png** (1x1) - Minimal transparent placeholder for Android adaptive icon foreground
+- **favicon.png** (1x1) - Minimal transparent placeholder for web favicon
 
 ## Note
 
-These are minimal placeholder images created for development purposes. Replace them with proper branded assets before production deployment.
+These are minimal 1x1 transparent PNG placeholder images created for development purposes. Replace them with properly sized branded assets before production deployment.
 
 ### Recommended Asset Specifications
 
