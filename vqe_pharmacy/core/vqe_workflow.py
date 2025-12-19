@@ -5,17 +5,21 @@ Orchestrates the complete Variational Quantum Eigensolver pipeline
 for molecular ground-state energy calculation.
 """
 
-from typing import Dict, Optional, List, Callable
+from typing import Dict, Optional, List, Callable, TYPE_CHECKING, Any
 import numpy as np
 
-try:
+if TYPE_CHECKING:
     from qiskit import QuantumCircuit
+
+try:
+    from qiskit import QuantumCircuit as QC
     from qiskit.primitives import Estimator
     from qiskit_algorithms import VQE
     from qiskit_algorithms.optimizers import SPSA, COBYLA
     QISKIT_ALGORITHMS_AVAILABLE = True
 except ImportError:
     QISKIT_ALGORITHMS_AVAILABLE = False
+    QC = Any
     print("Warning: qiskit-algorithms not available")
 
 try:
@@ -101,7 +105,7 @@ class VQEWorkflow:
             "num_electrons": mol_data["num_electrons"]
         }
     
-    def build_ansatz(self, num_qubits: int, num_electrons: int) -> QuantumCircuit:
+    def build_ansatz(self, num_qubits: int, num_electrons: int) -> Any:
         """
         Build the variational ansatz circuit.
         
