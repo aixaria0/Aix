@@ -77,7 +77,7 @@ export const useAppStore = create<AppState>((set) => ({
   ...initialState,
   
   setAuthenticated: (authenticated: boolean) =>
-    set({ isAuthenticated: authenticated }),
+    set({ isAuthenticated: authenticated, error: authenticated ? null : undefined }),
   
   setInitializing: (initializing: boolean) =>
     set({ isInitializing: initializing, error: initializing ? null : undefined }),
