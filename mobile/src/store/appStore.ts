@@ -80,7 +80,7 @@ export const useAppStore = create<AppState>((set) => ({
     set({ isAuthenticated: authenticated }),
   
   setInitializing: (initializing: boolean) =>
-    set({ isInitializing: initializing }),
+    set({ isInitializing: initializing, error: initializing ? null : undefined }),
   
   setError: (error: string | null) =>
     set({ error }),
