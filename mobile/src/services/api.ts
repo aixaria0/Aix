@@ -90,7 +90,7 @@ export class ApiClient {
   /**
    * Make a GET request
    */
-  async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async get<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     const instance = this.getAxiosInstance();
     return instance.get<T>(url, config);
   }
@@ -98,9 +98,9 @@ export class ApiClient {
   /**
    * Make a POST request
    */
-  async post<T = any>(
+  async post<T = unknown>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     const instance = this.getAxiosInstance();
@@ -110,9 +110,9 @@ export class ApiClient {
   /**
    * Make a PUT request
    */
-  async put<T = any>(
+  async put<T = unknown>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     const instance = this.getAxiosInstance();
@@ -122,7 +122,7 @@ export class ApiClient {
   /**
    * Make a DELETE request
    */
-  async delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async delete<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     const instance = this.getAxiosInstance();
     return instance.delete<T>(url, config);
   }
