@@ -57,6 +57,12 @@ export function validateEnvConfig(config: EnvConfig): {
 
   if (!config.API_BASE_URL || config.API_BASE_URL.trim() === '') {
     errors.push('API_BASE_URL is required');
+  } else {
+    try {
+      new URL(config.API_BASE_URL);
+    } catch {
+      errors.push('API_BASE_URL must be a valid URL');
+    }
   }
 
   if (!config.INTERNAL_AUTH_TOKEN || config.INTERNAL_AUTH_TOKEN.trim() === '') {
