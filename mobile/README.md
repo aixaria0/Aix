@@ -38,6 +38,18 @@ This application is **NOT** for public use. You must have:
    EXPO_PUBLIC_INTERNAL_AUTH_TOKEN=your-secret-internal-token
    ```
 
+   **⚠️ SECURITY WARNING**: This development setup uses `EXPO_PUBLIC_*` variables which are **compiled into the JavaScript bundle** and are **NOT SECRET**. This is acceptable for:
+   - Local development and testing
+   - Internal-only prototype/demo applications
+   - Non-sensitive API endpoints
+   
+   **NOT acceptable for**:
+   - Production applications
+   - Apps distributed outside your organization
+   - Storing sensitive credentials that must remain secret
+   
+   For production, implement proper authentication (see "Production Environment Variables & Deployment" section below).
+
    **IMPORTANT**: Never commit the `.env` file. It is in `.gitignore` by design.
 
 ### Production Environment Variables & Deployment
@@ -54,9 +66,23 @@ For production builds (e.g., EAS Build), environment variables should be managed
      ...config,
      extra: {
        API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL,
-       INTERNAL_AUTH_TOKEN: process.env.EXPO_PUBLIC_INTERNAL_AUTH_TOKEN,
+       // Note: Do NOT put sensitive tokens in EXPO_PUBLIC_* or extra config
+       // These are compiled into the client bundle and are NOT secret
      },
    });
+   ```
+
+**⚠️ SECURITY WARNING**: `EXPO_PUBLIC_*` environment variables are compiled into the JavaScript bundle and are **NOT SECRET**. Anyone who inspects the app can extract these values. 
+
+**DO NOT** store sensitive authentication tokens (like `INTERNAL_AUTH_TOKEN`) in `EXPO_PUBLIC_*` variables or `app.config.js` extra fields. For a production app with bearer token authentication, you should:
+
+1. **Implement a secure login flow**: Users should authenticate with credentials (username/password, SSO, etc.) and receive a short-lived token from your backend
+2. **Store tokens securely**: Use `expo-secure-store` to save tokens in the device keychain/keystore
+3. **Use per-user tokens**: Each user/device should have their own token, not a shared internal token
+4. **Implement token refresh**: Use refresh tokens to obtain new access tokens without requiring re-authentication
+
+This scaffold is for **initial development only** and demonstrates the authentication gating pattern. Before production use, implement proper authentication as described above.
+
 ## Running the App
 
 ```bash

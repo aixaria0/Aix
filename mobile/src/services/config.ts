@@ -3,6 +3,20 @@
  * Loads configuration from environment variables
  * 
  * IMPORTANT: This app requires internal authentication credentials
+ * 
+ * ⚠️ SECURITY WARNING:
+ * EXPO_PUBLIC_* environment variables are compiled into the JavaScript bundle
+ * and are NOT SECRET. They can be extracted by anyone who inspects the app.
+ * 
+ * This implementation is suitable for:
+ * - Local development and testing
+ * - Internal prototype/demo applications
+ * 
+ * For production applications, implement:
+ * - Secure login flow with backend authentication
+ * - Per-user/per-device tokens (not shared credentials)
+ * - Token storage in secure keychain (expo-secure-store)
+ * - Token refresh mechanisms
  */
 
 // In a real app, use expo-constants and app.config.js for env vars
