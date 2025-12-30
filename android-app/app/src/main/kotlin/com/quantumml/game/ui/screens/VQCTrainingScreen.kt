@@ -199,24 +199,36 @@ fun DecisionBoundaryView(accuracy: Float, modifier: Modifier = Modifier) {
             )
 
             // Sample data points (Class 0 - blue)
-            for (i in 0..9) {
-                val x = Random.nextFloat() * size.width * 0.4f + 50f
-                val y = Random.nextFloat() * size.height * 0.6f + 50f
+            val class0Points = remember(size) {
+                List(10) {
+                    Offset(
+                        Random.nextFloat() * size.width * 0.4f + 50f,
+                        Random.nextFloat() * size.height * 0.6f + 50f
+                    )
+                }
+            }
+            for (point in class0Points) {
                 drawCircle(
                     color = Color.Blue,
                     radius = 6f,
-                    center = Offset(x, y)
+                    center = point
                 )
             }
 
             // Sample data points (Class 1 - red)
-            for (i in 0..9) {
-                val x = Random.nextFloat() * size.width * 0.4f + size.width * 0.6f
-                val y = Random.nextFloat() * size.height * 0.4f + size.height * 0.4f
+            val class1Points = remember(size) {
+                List(10) {
+                    Offset(
+                        Random.nextFloat() * size.width * 0.4f + size.width * 0.6f,
+                        Random.nextFloat() * size.height * 0.4f + size.height * 0.4f
+                    )
+                }
+            }
+            for (point in class1Points) {
                 drawCircle(
                     color = Color.Red,
                     radius = 6f,
-                    center = Offset(x, y)
+                    center = point
                 )
             }
 
