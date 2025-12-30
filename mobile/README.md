@@ -1,0 +1,186 @@
+# Aix Internal Mobile Application
+
+**PRIVATE INTERNAL APPLICATION** - Quantum LLM Sentinel Client Interface
+
+This is an internal-only mobile application scaffold built with Expo React Native. Access is restricted and requires valid internal authentication credentials.
+
+## ⚠️ Access Requirements
+
+This application is **NOT** for public use. You must have:
+
+- Valid `EXPO_PUBLIC_INTERNAL_AUTH_TOKEN` (obtain from platform team)
+- Access to internal API endpoints
+- Authorization to work on this project
+
+## Prerequisites
+
+- Node.js 18+ and npm
+- iOS Simulator (macOS) or Android Emulator
+
+## Setup
+
+1. **Install Dependencies**
+   ```bash
+   cd mobile
+   npm install
+   ```
+
+2. **Configure Environment**
+   
+   Copy `.env.example` to `.env` and fill in your credentials:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Edit `.env` with valid credentials:
+   ```
+   EXPO_PUBLIC_API_BASE_URL=https://your-internal-api.example.com
+   EXPO_PUBLIC_INTERNAL_AUTH_TOKEN=your-secret-internal-token
+   ```
+
+   **⚠️ SECURITY WARNING**: This development setup uses `EXPO_PUBLIC_*` variables which are **compiled into the JavaScript bundle** and are **NOT SECRET**. This is acceptable for:
+   - Local development and testing
+   - Internal-only prototype/demo applications
+   - Non-sensitive API endpoints
+   
+   **NOT acceptable for**:
+   - Production applications
+   - Apps distributed outside your organization
+   - Storing sensitive credentials that must remain secret
+   
+   For production, implement proper authentication (see "Production Environment Variables & Deployment" section below).
+
+   **IMPORTANT**: Never commit the `.env` file. It is in `.gitignore` by design.
+
+### Production Environment Variables & Deployment
+
+For production builds (e.g., EAS Build), environment variables should be managed differently than local `.env` files. Here are recommended approaches:
+
+1. **EAS Secrets**: Store sensitive values (like API tokens) securely using [EAS Secrets](https://docs.expo.dev/build-reference/secrets/). These are injected at build time and never exposed in source code.
+
+2. **app.config.js with `extra`**: Define non-sensitive environment variables in your `app.config.js` file using the `extra` field. Access these in your app via [`expo-constants`](https://docs.expo.dev/versions/latest/sdk/constants/#constantsmanifestextra).
+
+   ```js
+   // app.config.js
+   export default ({ config }) => ({
+     ...config,
+     extra: {
+       API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL,
+       // Note: Do NOT put sensitive tokens in EXPO_PUBLIC_* or extra config
+       // These are compiled into the client bundle and are NOT secret
+     },
+   });
+   ```
+
+**⚠️ SECURITY WARNING**: `EXPO_PUBLIC_*` environment variables are compiled into the JavaScript bundle and are **NOT SECRET**. Anyone who inspects the app can extract these values. 
+
+**DO NOT** store sensitive authentication tokens (like `INTERNAL_AUTH_TOKEN`) in `EXPO_PUBLIC_*` variables or `app.config.js` extra fields. For a production app with bearer token authentication, you should:
+
+1. **Implement a secure login flow**: Users should authenticate with credentials (username/password, SSO, etc.) and receive a short-lived token from your backend
+2. **Store tokens securely**: Use `expo-secure-store` to save tokens in the device keychain/keystore
+3. **Use per-user tokens**: Each user/device should have their own token, not a shared internal token
+4. **Implement token refresh**: Use refresh tokens to obtain new access tokens without requiring re-authentication
+
+This scaffold is for **initial development only** and demonstrates the authentication gating pattern. Before production use, implement proper authentication as described above.
+
+## Running the App
+
+```bash
+# Start Expo dev server
+npm start
+
+# Run on iOS simulator
+npm run ios
+
+# Run on Android emulator
+npm run android
+
+# Run in web browser (development only)
+npm run web
+```
+
+## Authentication
+
+The app enforces bearer token authentication on all API requests:
+
+- Authentication is configured at app startup
+- All API calls include `Authorization: Bearer <token>` header
+- Missing or invalid tokens prevent app initialization
+- 401/403 responses trigger authentication errors
+
+## Project Structure
+
+```
+mobile/
+├── app/                    # Expo Router pages
+│   ├── _layout.tsx        # Root layout with auth initialization
+│   └── index.tsx          # Home screen
+├── src/
+│   ├── services/          # Core services
+│   │   ├── auth.ts        # Authentication service
+│   │   ├── api.ts         # API client with auth gating
+│   │   └── config.ts      # Environment configuration
+│   ├── store/             # Zustand state management
+│   │   └── appStore.ts    # Global app state
+│   ├── components/        # Reusable UI components
+│   ├── screens/           # Screen components
+│   └── types/             # TypeScript type definitions
+├── app.json               # Expo configuration
+├── package.json           # Dependencies
+├── tsconfig.json          # TypeScript configuration
+└── .env.example           # Environment template
+```
+
+## Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+## Development
+
+```bash
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+```
+
+## Security Notes
+
+- **Never commit `.env` file or expose `EXPO_PUBLIC_INTERNAL_AUTH_TOKEN`**
+- This app is for internal use only
+- All API communication uses bearer token authentication
+- Contact the platform team for credential issues
+
+## Tech Stack
+
+- **Framework**: Expo SDK 50 with Expo Router
+- **Language**: TypeScript (strict mode)
+- **State Management**: Zustand
+- **HTTP Client**: Axios with interceptors
+- **Testing**: Jest + React Native Testing Library
+- **UI**: React Native with Safe Area Context
+
+## Next Steps
+
+This scaffold provides the foundation. To build the Quantum LLM Sentinel interface:
+
+1. Add screen navigation and routing
+2. Implement LLM monitoring UI components
+3. Add real-time data visualization
+4. Integrate with backend APIs
+5. Implement comprehensive error handling
+6. Add user preferences and settings
+
+## Support
+
+For access issues or questions:
+- Contact the internal platform team
+- Review internal documentation
+- Check with project maintainers
