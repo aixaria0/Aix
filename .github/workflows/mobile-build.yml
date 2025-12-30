@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
+          cache-dependency-path: mobile/package-lock.json
 
       - name: Install EAS CLI
         run: npm i -g eas-cli
