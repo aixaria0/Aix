@@ -146,7 +146,10 @@ async def adapt_game(request: AdaptationRequest):
     
     # Calculate difficulty adjustment based on performance
     # If there are no performance metrics, avg_performance is set to 0 by default.
-    avg_performance = sum(context.performance_metrics.values()) / max(len(context.performance_metrics), 1)
+    avg_performance = (
+        sum(context.performance_metrics.values()) / len(context.performance_metrics)
+        if context.performance_metrics else 0.5
+    )
     difficulty_adjustment = 0.0
     if avg_performance > 0.8:
         difficulty_adjustment = 0.1  # Increase difficulty
