@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="description" content="Aix is an internal mobile security testing platform for orchestrating test jobs, tracking metrics, reviewing vulnerability reports, and preserving prompt lineage." />
+  <meta property="og:title" content="Aix — Security Testing Operations" />
+  <meta property="og:description" content="From exploratory test intent to structured evidence." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Aix — Security Testing Operations</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-nav>
+    <a class="brand" href="#top" aria-label="Aix home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 44 44" role="img">
+          <path d="M22 4 39 14v16L22 40 5 30V14L22 4Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13 29 22 11l9 18M16.2 23h11.6M31 13l-5.5 8.6L32 31" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-word">AIX</span>
+      <span class="brand-slash">/</span>
+      <span class="brand-sub">SECURITY OPS</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span></span><span></span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+      <a href="#system">System</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#docs">Docs</a>
+      <a class="nav-github" href="https://github.com/aixaria0/Aix" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span> INTERNAL SECURITY TESTING PLATFORM</div>
+        <h1 id="hero-title">Turn exploratory testing into <span>structured evidence.</span></h1>
+        <p class="hero-lede">Aix is a mobile-first operations surface for launching security test jobs, tracking live metrics, reviewing vulnerability reports, and preserving the context behind every finding.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#architecture">Explore the system <span>→</span></a>
+          <a class="button button-ghost" href="https://github.com/aixaria0/Aix" target="_blank" rel="noreferrer">View source <span>↗</span></a>
+        </div>
+        <div class="hero-meta" aria-label="Project facts">
+          <div><strong>Expo SDK 54</strong><span>Mobile runtime</span></div>
+          <div><strong>TypeScript</strong><span>Strictly typed</span></div>
+          <div><strong>17 tests</strong><span>Core logic coverage</span></div>
+        </div>
+      </div>
+
+      <div class="command-shell reveal" aria-label="Illustrative Aix operations interface">
+        <div class="command-topbar">
+          <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="command-id">AIX // OPS-01</div>
+          <div class="secure-pill"><span></span> SECURE</div>
+        </div>
+
+        <div class="command-grid">
+          <aside class="command-rail" aria-hidden="true">
+            <div class="rail-logo">A</div>
+            <div class="rail-item active"></div>
+            <div class="rail-item"></div>
+            <div class="rail-item"></div>
+            <div class="rail-item"></div>
+            <div class="rail-spacer"></div>
+            <div class="rail-item small"></div>
+          </aside>
+
+          <div class="command-main">
+            <div class="command-heading">
+              <div><span class="micro-label">ACTIVE WORKSPACE</span><h2>Security Operations</h2></div>
+              <div class="live-chip"><i></i> LIVE</div>
+            </div>
+
+            <div class="metric-row">
+              <article><span>TEST JOBS</span><strong data-count="453">453</strong><small>+12 this cycle</small></article>
+              <article><span>ACTIVE</span><strong data-count="37">37</strong><small>8 high priority</small></article>
+              <article><span>AVG SCORE</span><strong>87.3<em>%</em></strong><small>risk confidence</small></article>
+              <article><span>SUCCESS</span><strong>94.2<em>%</em></strong><small>validated runs</small></article>
+            </div>
+
+            <div class="ops-layout">
+              <section class="telemetry-panel">
+                <div class="panel-title"><span>RISK TELEMETRY</span><small>LAST 24 RUNS</small></div>
+                <div class="chart" aria-hidden="true">
+                  <div class="chart-grid"></div>
+                  <svg viewBox="0 0 520 190" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="lineGlow" x1="0" x2="1">
+                        <stop offset="0" stop-color="#3478f6"/>
+                        <stop offset="0.55" stop-color="#61d8ff"/>
+                        <stop offset="1" stop-color="#8a7dff"/>
+                      </linearGradient>
+                      <linearGradient id="areaGlow" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#3478f6" stop-opacity=".26"/>
+                        <stop offset="1" stop-color="#3478f6" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-area" d="M0 158 C34 156 44 127 78 130 S125 162 158 122 S210 98 235 111 S270 150 305 104 S354 85 382 92 S426 119 452 75 S495 62 520 31 L520 190 L0 190 Z" fill="url(#areaGlow)"/>
+                    <path class="chart-line" d="M0 158 C34 156 44 127 78 130 S125 162 158 122 S210 98 235 111 S270 150 305 104 S354 85 382 92 S426 119 452 75 S495 62 520 31" fill="none" stroke="url(#lineGlow)" stroke-width="2.3" vector-effect="non-scaling-stroke"/>
+                  </svg>
+                  <div class="chart-marker" style="--x: 86%; --y: 33%"><span>9.1</span></div>
+                </div>
+              </section>
+
+              <section class="findings-panel">
+                <div class="panel-title"><span>LATEST FINDINGS</span><small>SEVERITY</small></div>
+                <div class="finding"><i class="severity critical"></i><div><strong>Injection vector</strong><span>Report AIX-9F2</span></div><b>9.8</b></div>
+                <div class="finding"><i class="severity high"></i><div><strong>Access anomaly</strong><span>Report AIX-7C1</span></div><b>8.5</b></div>
+                <div class="finding"><i class="severity medium"></i><div><strong>Input boundary</strong><span>Report AIX-4B7</span></div><b>6.4</b></div>
+                <div class="finding"><i class="severity low"></i><div><strong>Header policy</strong><span>Report AIX-1D4</span></div><b>3.2</b></div>
+              </section>
+            </div>
+
+            <div class="terminal-line"><span class="prompt">aix@ops:~$</span> <span id="terminal-text">trace --job AIX-9F2 --lineage</span><span class="cursor">▋</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack-strip" aria-label="Technology stack">
+      <div class="marquee-track">
+        <span>REACT NATIVE 0.81.5</span><i></i><span>EXPO SDK 54</span><i></i><span>TYPESCRIPT 5.9</span><i></i><span>ZUSTAND 5</span><i></i><span>REANIMATED 4.1</span><i></i><span>JEST 29.7</span><i></i><span>SECURESTORE</span>
+      </div>
+    </section>
+
+    <section id="system" class="section-shell split-section">
+      <div class="section-intro reveal">
+        <span class="section-index">01 / SYSTEM</span>
+        <h2>A control surface for the full testing loop.</h2>
+        <p>Aix keeps operational context in one place: authentication, test creation, metrics, findings, and user progress. The interface is intentionally mobile-first so security work can remain visible without a desktop command center.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="feature-num">01</span>
+          <div class="feature-icon">⌁</div>
+          <h3>Test Jobs</h3>
+          <p>Create and track exploratory security jobs from a dedicated operational queue.</p>
+          <div class="feature-foot"><span>ORCHESTRATION</span><i></i></div>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-num">02</span>
+          <div class="feature-icon">◇</div>
+          <h3>Risk Reports</h3>
+          <p>Review findings with severity classification, risk scoring, summaries, and evidence context.</p>
+          <div class="feature-foot"><span>VULNERABILITY INTEL</span><i></i></div>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-num">03</span>
+          <div class="feature-icon">⌇</div>
+          <h3>Metrics</h3>
+          <p>Monitor job volume, active work, average scores, success ratios, and refresh state.</p>
+          <div class="feature-foot"><span>TELEMETRY</span><i></i></div>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-num">04</span>
+          <div class="feature-icon">⟁</div>
+          <h3>Prompt Lineage</h3>
+          <p>Preserve the path behind a report so a finding is tied back to the context that produced it.</p>
+          <div class="feature-foot"><span>TRACEABILITY</span><i></i></div>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-num">05</span>
+          <div class="feature-icon">◐</div>
+          <h3>Secure Preferences</h3>
+          <p>Persist theme choices through Expo SecureStore with system-aware light and dark modes.</p>
+          <div class="feature-foot"><span>MOBILE UX</span><i></i></div>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-num">06</span>
+          <div class="feature-icon">⌬</div>
+          <h3>Progress System</h3>
+          <p>Use XP, levels, and achievements to make repeated internal testing workflows measurable.</p>
+          <div class="feature-foot"><span>GAMIFICATION</span><i></i></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+      <div class="section-shell">
+        <div class="section-intro horizontal reveal">
+          <div><span class="section-index">02 / WORKFLOW</span><h2>From intent to evidence.</h2></div>
+          <p>The application flow is deliberately simple: establish identity, launch a job, observe execution-level metrics, then inspect the report and its lineage.</p>
+        </div>
+
+        <div class="flow-grid">
+          <div class="flow-line" aria-hidden="true"><span></span></div>
+          <article class="flow-step reveal"><b>01</b><div class="flow-node">AUTH</div><h3>Authenticate</h3><p>Token validation with encrypted local storage.</p></article>
+          <article class="flow-step reveal"><b>02</b><div class="flow-node">JOB</div><h3>Launch</h3><p>Create a test job and begin the evaluation cycle.</p></article>
+          <article class="flow-step reveal"><b>03</b><div class="flow-node">OBS</div><h3>Observe</h3><p>Track job counts, scores, and success indicators.</p></article>
+          <article class="flow-step reveal"><b>04</b><div class="flow-node">RPT</div><h3>Review</h3><p>Inspect severity, risk score, and report context.</p></article>
+          <article class="flow-step reveal"><b>05</b><div class="flow-node">TRC</div><h3>Trace</h3><p>Follow prompt lineage back to the originating path.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section-shell architecture-section">
+      <div class="section-intro reveal">
+        <span class="section-index">03 / ARCHITECTURE</span>
+        <h2>Small surface. Clear boundaries.</h2>
+        <p>Aix separates navigation, state, API integration, and theme infrastructure so the internal tool can evolve without turning its mobile surface into a monolith.</p>
+      </div>
+
+      <div class="architecture-board reveal">
+        <div class="arch-grid-bg" aria-hidden="true"></div>
+        <div class="arch-left">
+          <span class="micro-label">CLIENT LAYER</span>
+          <div class="arch-node primary"><span>EXPO / REACT NATIVE</span><small>Mobile application surface</small></div>
+          <div class="arch-node"><span>EXPO ROUTER</span><small>Tabs · Auth · Report detail</small></div>
+          <div class="arch-node"><span>THEME PROVIDER</span><small>System mode · SecureStore</small></div>
+        </div>
+        <div class="arch-center" aria-hidden="true">
+          <svg viewBox="0 0 300 420" preserveAspectRatio="none">
+            <path d="M0 70 C92 70 65 120 150 120 S210 70 300 70"/>
+            <path d="M0 210 C90 210 78 170 150 170 S218 210 300 210"/>
+            <path d="M0 350 C92 350 65 300 150 300 S210 350 300 350"/>
+            <circle cx="150" cy="120" r="5"/><circle cx="150" cy="170" r="5"/><circle cx="150" cy="300" r="5"/>
+          </svg>
+          <div class="arch-core"><span>AIX</span><small>STATE</small></div>
+        </div>
+        <div class="arch-right">
+          <span class="micro-label">DOMAIN STATE</span>
+          <div class="arch-node"><span>useMetrics</span><small>Jobs · Scores · Success ratio</small></div>
+          <div class="arch-node primary"><span>useReports</span><small>Severity · Risk · Lineage</small></div>
+          <div class="arch-node"><span>useGamification</span><small>XP · Levels · Badges</small></div>
+        </div>
+      </div>
+
+      <div class="architecture-note reveal">
+        <div><span class="note-signal"></span><strong>Integration boundary</strong></div>
+        <p>The current repository uses mock data at several API integration points. Those boundaries are explicitly marked for future backend connection rather than presented here as production telemetry.</p>
+      </div>
+    </section>
+
+    <section class="principles-section">
+      <div class="section-shell principles-grid">
+        <div class="section-intro reveal">
+          <span class="section-index">04 / PRINCIPLES</span>
+          <h2>Built to be useful before it is impressive.</h2>
+        </div>
+        <div class="principle-list">
+          <article class="reveal"><span>01</span><div><h3>Traceability over spectacle</h3><p>A finding should retain enough context to be inspected, reproduced, and challenged.</p></div></article>
+          <article class="reveal"><span>02</span><div><h3>Explicit integration boundaries</h3><p>Mock data and future backend work remain clearly separated from implemented client behavior.</p></div></article>
+          <article class="reveal"><span>03</span><div><h3>Operational feedback</h3><p>Metrics, risk scores, and progression turn repeated testing work into visible system state.</p></div></article>
+          <article class="reveal"><span>04</span><div><h3>Mobile-first visibility</h3><p>Security operations should remain inspectable without depending on a full desktop environment.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="section-shell docs-section">
+      <div class="section-intro horizontal reveal">
+        <div><span class="section-index">05 / DOCUMENTATION</span><h2>Read the system, not the marketing.</h2></div>
+        <p>The repository includes implementation notes, architecture decisions, test guidance, and integration references.</p>
+      </div>
+      <div class="docs-grid">
+        <a class="doc-card reveal" href="https://github.com/aixaria0/Aix/blob/main/mobile/ARCHITECTURE.md" target="_blank" rel="noreferrer"><span>ARCH</span><div><h3>Architecture</h3><p>Application flow, navigation, Zustand stores, and screen topology.</p></div><b>↗</b></a>
+        <a class="doc-card reveal" href="https://github.com/aixaria0/Aix/blob/main/mobile/README.md" target="_blank" rel="noreferrer"><span>DOC</span><div><h3>Mobile README</h3><p>Setup, features, testing, and development workflow.</p></div><b>↗</b></a>
+        <a class="doc-card reveal" href="https://github.com/aixaria0/Aix/blob/main/mobile/IMPLEMENTATION_SUMMARY.md" target="_blank" rel="noreferrer"><span>IMP</span><div><h3>Implementation Summary</h3><p>Implemented capabilities and project delivery details.</p></div><b>↗</b></a>
+        <a class="doc-card reveal" href="https://github.com/aixaria0/Aix/blob/main/SECURITY.md" target="_blank" rel="noreferrer"><span>SEC</span><div><h3>Security Policy</h3><p>Repository security reporting reference.</p></div><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="cta-section section-shell reveal">
+      <div class="cta-grid" aria-hidden="true"></div>
+      <div class="cta-copy">
+        <span class="section-index">AIX / OPEN REPOSITORY</span>
+        <h2>Inspect the implementation.</h2>
+        <p>The site is only the surface. The mobile application, test suite, architecture notes, and integration boundaries are in the repository.</p>
+        <a class="button button-primary" href="https://github.com/aixaria0/Aix" target="_blank" rel="noreferrer">Open GitHub <span>↗</span></a>
+      </div>
+      <div class="cta-mark" aria-hidden="true">AIX</div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div class="footer-brand"><span class="brand-word">AIX</span><span>Internal security testing platform.</span></div>
+    <div class="footer-meta"><span>Expo · React Native · TypeScript</span><span>© <span id="year"></span> aixaria0</span></div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
